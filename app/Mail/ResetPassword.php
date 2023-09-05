@@ -13,22 +13,22 @@ class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $token;
+    // private $token;
 
     /**
      * Create a new message instance.
      */
     public function __construct($token)
     {
-        $this->token = $token;
+        // $this->token = $token;
     }
 
-    public function build()
-    {
-        return $this
-            ->subject('パスワード再設定')
-            ->view('mail.password-reset');
-    }
+    // public function build()
+    // {
+    //     return $this
+    //         ->subject('パスワード再設定')
+    //         ->view('mail.password-reset');
+    // }
 
     /**
      * Get the message envelope.
@@ -46,7 +46,7 @@ class ResetPassword extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.password-reset',
         );
     }
 

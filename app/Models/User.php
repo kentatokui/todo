@@ -50,8 +50,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Folder');
     }
 
-    public function sendPasswordResetNotification($token)
-    {
-        Mail::to($this)->send(new ResetPassword($token));
-    }
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     Mail::to($this)->send(new ResetPassword($token));
+    // }
 }
