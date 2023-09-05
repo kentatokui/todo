@@ -5,15 +5,16 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Task;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\CreateTask;
 
-class EditTask extends FormRequest
+class EditTask extends CreateTask
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +22,7 @@ class EditTask extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules()
+    public function rules(): array
     {
         $rule = parent::rules();
 
