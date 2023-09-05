@@ -7,18 +7,33 @@
         <nav class="panel panel-default">
         <div class="panel-heading">パスワード再発行</div>
         <div class="panel-body">
-            <form action="{{ route('password.update') }}" method="POST">
+            <form method="POST" action="{{ route('password.request') }}">
             @csrf
             <div class="form-group">
                 <label for="email">メールアドレス</label>
-                <input type="text" class="form-control" id="email" name="email" />
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $email) }}"/>
             </div>
             <div class="form-group">
                 <label for="password">新しいパスワード</label>
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                 <input type="password" class="form-control" id="password" name="password" />
             </div>
             <div class="form-group">
                 <label for="password-confirm">新しいパスワード（確認）</label>
+                    @if ($errors->has('password_confirmation'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
                 <input type="password" class="form-control" id="password-confirm" name="password_confirmation" />
             </div>
             <div class="text-right">
